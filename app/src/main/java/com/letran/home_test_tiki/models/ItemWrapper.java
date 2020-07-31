@@ -4,13 +4,13 @@ import java.util.List;
 
 public class ItemWrapper {
 
-    private List<Item> data;
+    private List<List<Item>> data;
 
-    public List<Item> getData() {
+    public List<List<Item>> getData() {
         return data;
     }
 
-    public void setData(List<Item> data) {
+    public void setData(List<List<Item>> data) {
         this.data = data;
     }
 }

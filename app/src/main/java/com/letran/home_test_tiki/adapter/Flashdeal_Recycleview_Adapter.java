@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.letran.home_test_tiki.R;
 import com.letran.home_test_tiki.models.FlashDeal;
+import com.letran.home_test_tiki.models.Product;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -29,19 +30,21 @@ public class Flashdeal_Recycleview_Adapter extends RecyclerView.Adapter<Flashdea
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_banner_home,parent,false);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_flashdeal_home,parent,false);
         return new MyViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-//        FlashDeal.Product product = lstFlashdeal.get(position).getProduct();
-//        if(!product.getThumbnail_url().isEmpty()) {
-//            Picasso.with(context).load(product.getThumbnail_url()).into(holder.imageView);
-//        }else
-//            holder.imageView.setImageResource(R.drawable.notfoundimage);
-//
-//        holder.txtPrice.setText(product.getPrice() + " đ");
+        Product product = lstFlashdeal.get(position).getProduct();
+        if(!product.getThumbnail_url().isEmpty()) {
+            Picasso.with(context).load(product.getThumbnail_url()).into(holder.imageView);
+        }else
+            holder.imageView.setImageResource(R.drawable.notfoundimage);
+
+        String number = String.format("%,d",Integer.parseInt(product.getPrice()));
+        holder.txtPrice.setText(number + " đ");
+        holder.txtDiscount.setText(lstFlashdeal.get(position).getDiscount_percent() + "%");
     }
 
     @Override
@@ -53,10 +56,13 @@ public class Flashdeal_Recycleview_Adapter extends RecyclerView.Adapter<Flashdea
 
         private ImageView imageView;
         private TextView txtPrice;
+        private TextView txtDiscount;
+
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             imageView = (ImageView)itemView.findViewById(R.id.image);
             txtPrice = (TextView)itemView.findViewById(R.id.txtPrice);
+            txtDiscount = (TextView)itemView.findViewById(R.id.txtDiscount);
         }
     }
 }

@@ -1,7 +1,5 @@
 package com.letran.home_test_tiki.models;
 
-import java.util.List;
-
 public class FlashDeal {
     private String status;
     private String url;
@@ -92,42 +90,5 @@ public class FlashDeal {
 
     public void setProduct(Product product) {
         this.product = product;
-    }
-
-    private class Progress{
-        private String qty;
-        private String qty_ordered;
-        private String qty_remain;
-        private String percent;
-        private String status;
-    }
-
-    private class Product{
-        private String id;
-        private String sku;
-        private String name;
-        private String url_path;
-        private String price;
-        private String list_price;
-        private List<String> badges;
-        private String discount;
-        private String rating_average;
-        private String review_count;
-        private String order_count;
-        private String thumbnail_url;
-        private String is_visible;
-        private String is_fresh;
-        private String is_flower;
-        private String is_gift_card;
-        private Inventory inventory;
-        private String url_attendant_input_form;
-        private String master_id;
-        private String seller_product_id;
-        private String price_prefix;
-    }
-
-    private class Inventory{
-        private String product_virtual_type;
-        private String fulfillment_type;
     }
 }

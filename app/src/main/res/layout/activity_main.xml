@@ -4,20 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical"
-    android:background="@color/input_register"
     tools:context=".views.MainActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:background="@color/bg_main">
 
         <ImageView
             android:id="@+id/logo"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_centerVertical="true"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
             android:layout_centerHorizontal="true"
             android:background="@drawable/logo" />
 
@@ -25,116 +24,185 @@
             android:id="@+id/cart"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="20dp"
             android:layout_alignParentRight="true"
+            android:layout_marginTop="17dp"
+            android:layout_marginRight="20dp"
             android:background="@drawable/cart" />
 
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="17dp"
             android:layout_marginRight="20dp"
             android:layout_toLeftOf="@+id/cart"
             android:background="@drawable/comment" />
+
+        <ImageView
+            android:id="@+id/ivSearch"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_below="@+id/logo"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/search" />
+
     </RelativeLayout>
 
-    <ImageView
-        android:id="@+id/ivSearch"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_centerVertical="true"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"
-        android:background="@drawable/search" />
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="10dp">
-
-            <fragment
-                android:id="@+id/fragment_banner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:name="com.letran.home_test_tiki.fragments.Banner_Fragment"
-                tools:layout="@layout/fragment_banner"/>
-
-            <fragment
-                android:id="@+id/fragment_quicklink"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/fragment_banner"
-                android:layout_marginTop="10dp"
-                android:name="com.letran.home_test_tiki.fragments.QuickLink_Fragment"
-                tools:layout="@layout/fragment_quicklink"/>
-
-            <fragment
-                android:id="@+id/fragment_flashdeal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/fragment_quicklink"
-                android:layout_marginTop="10dp"
-                android:name="com.letran.home_test_tiki.fragments.Flashdeal_Fragment"
-                tools:layout="@layout/fragment_flashdeal"/>
-
-
-    <androidx.appcompat.widget.Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:layout_alignParentBottom="true"
-        android:background="@color/white">
-
-        <LinearLayout
+        <ScrollView
+            android:id="@+id/scrollView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="5">
+            android:layout_marginBottom="?attr/actionBarSize"
+            android:scrollbars="none">
 
-            <ImageView
-                android:id="@+id/home"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_weight="1"
-                android:layout_gravity="left"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/home"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_weight="1"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/category"/>
+                <fragment
+                    android:id="@+id/fragment_banner"
+                    android:name="com.letran.home_test_tiki.fragments.Banner_Fragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:layout="@layout/fragment_banner" />
 
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_weight="1"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/category"/>
+                <fragment
+                    android:id="@+id/fragment_quicklink"
+                    android:name="com.letran.home_test_tiki.fragments.QuickLink_Fragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/fragment_banner"
+                    android:layout_marginTop="10dp"
+                    tools:layout="@layout/fragment_quicklink" />
 
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_weight="1"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/category"/>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
+                    android:layout_below="@+id/fragment_quicklink"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/line" />
 
-            <ImageView
-                android:id="@+id/personal"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_weight="1"
-                android:layout_gravity="right"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/category"/>
-        </LinearLayout>
-    </androidx.appcompat.widget.Toolbar>
-        </RelativeLayout>
+                <fragment
+                    android:id="@+id/fragment_flashdeal"
+                    android:name="com.letran.home_test_tiki.fragments.Flashdeal_Fragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/fragment_quicklink"
+                    android:layout_marginTop="10dp"
+                    tools:layout="@layout/fragment_flashdeal" />
+
+                <ImageView
+                    android:id="@+id/line"
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"
+                    android:layout_below="@id/fragment_flashdeal"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/line" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/line"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginTop="10dp"
+                        android:text="TIKILIVE"
+                        android:textSize="13dp"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="30dp"
+                        android:layout_marginTop="10dp"
+                        android:text="XEM THÊM"
+                        android:textSize="13dp"
+                        android:textColor="@color/bg_main" />
+                </RelativeLayout>
+            </RelativeLayout>
+        </ScrollView>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="?attr/actionBarSize"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/line" />
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_alignParentBottom="true"
+            android:background="@color/white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="5">
+
+                <ImageView
+                    android:id="@+id/home"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/home" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/category" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/icon_search" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/notify" />
+
+                <ImageView
+                    android:id="@+id/personal"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="right"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/personal" />
+            </LinearLayout>
+        </androidx.appcompat.widget.Toolbar>
+    </RelativeLayout>
 </LinearLayout>
