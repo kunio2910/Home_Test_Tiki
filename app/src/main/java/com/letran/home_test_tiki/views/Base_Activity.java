@@ -5,15 +5,14 @@ import android.view.View;
 import android.view.WindowManager;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 
 import com.letran.home_test_tiki.R;
 
 public class Base_Activity extends AppCompatActivity {
 
-    private ActionBar actionBar;
     protected ConstraintLayout constraintLayout;
     protected View contentView;
 
@@ -21,18 +20,8 @@ public class Base_Activity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base);
-
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
-        Initiate();
-    }
-
-    private void Initiate() {
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
+        getWindow().setStatusBarColor(ContextCompat.getColor(Base_Activity.this,R.color.bg_main));
         constraintLayout = (ConstraintLayout)findViewById(R.id.layout);
-//        actionBar = getSupportActionBar();
-//        actionBar.setDisplayShowTitleEnabled(false);
-//        actionBar.setDisplayHomeAsUpEnabled(false);
-//        actionBar.setHomeButtonEnabled(false);
     }
 }

@@ -30,7 +30,7 @@ public class Flashdeal_Presenter implements Handle_Presenter_Flashdeal.Presenter
     }
 
     @Override
-    public void GetData() {
+    public void GetDataJsonFromAPI() {
         // Tag used to cancel the request
         String tag_string_req = "req_getdata";
 
@@ -40,7 +40,7 @@ public class Flashdeal_Presenter implements Handle_Presenter_Flashdeal.Presenter
                 .setCancelable(false).build();
         alertDialog.show();
 
-        StringRequest strReqCar_1 = new StringRequest(Request.Method.GET, AppConfig.FLASH_DEAL_API, new Response.Listener<String>() {
+        StringRequest strReq = new StringRequest(Request.Method.GET, AppConfig.FLASH_DEAL_API, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 convertJsonToObjectFlashdeal(response);
@@ -55,11 +55,11 @@ public class Flashdeal_Presenter implements Handle_Presenter_Flashdeal.Presenter
         });
 
         // Adding request to request queue
-        AppController.getInstance(context).addToRequestQueue(strReqCar_1, tag_string_req);
+        AppController.getInstance(context).addToRequestQueue(strReq, tag_string_req);
     }
 
     public void convertJsonToObjectFlashdeal(String response) {
         FlashDealWrapper flashDealWrapper = gson.fromJson(response, FlashDealWrapper.class);
-        mView.GetDataSuccessFlashdeal(flashDealWrapper.getData());
+        mView.GetDataFlashdealSuccess(flashDealWrapper.getData());
     }
 }

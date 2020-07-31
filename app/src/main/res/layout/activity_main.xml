@@ -37,15 +37,38 @@
             android:layout_toLeftOf="@+id/cart"
             android:background="@drawable/comment" />
 
-        <ImageView
-            android:id="@+id/ivSearch"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_below="@+id/logo"
-            android:layout_centerHorizontal="true"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/search" />
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/logo">
+
+            <ImageView
+                android:id="@+id/ivSearch"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/searchbar" />
+
+            <ImageView
+                android:id="@+id/ivIconSearch"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/icon_search" />
+
+            <EditText
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="15dp"
+                android:background="@null"
+                android:hint="Bạn tìm gì hôm nay..." />
+
+        </RelativeLayout>
 
     </RelativeLayout>
 
@@ -123,17 +146,17 @@
                         android:layout_marginTop="10dp"
                         android:text="TIKILIVE"
                         android:textSize="13dp"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:layout_marginRight="30dp"
                         android:layout_marginTop="10dp"
+                        android:layout_marginRight="30dp"
                         android:text="XEM THÊM"
-                        android:textSize="13dp"
-                        android:textColor="@color/bg_main" />
+                        android:textColor="@color/bg_main"
+                        android:textSize="13dp" />
                 </RelativeLayout>
             </RelativeLayout>
         </ScrollView>
@@ -141,68 +164,30 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="2dp"
+            android:layout_alignParentBottom="true"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="?attr/actionBarSize"
-            android:layout_alignParentBottom="true"
             android:background="@drawable/line" />
 
-        <androidx.appcompat.widget.Toolbar
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:layout_alignParentBottom="true"
-            android:background="@color/white">
+            android:layout_height="match_parent">
 
-            <LinearLayout
+            <com.google.android.material.bottomappbar.BottomAppBar
+                android:id="@+id/bottom_app_bar"
+                style="@style/Widget.MaterialComponents.BottomAppBar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="5">
+                android:layout_height="56dp"
+                android:layout_gravity="bottom"
+                app:fabAlignmentMode="center" >
 
-                <ImageView
-                    android:id="@+id/home"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="left"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/home" />
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/category" />
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/icon_search" />
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/notify" />
-
-                <ImageView
-                    android:id="@+id/personal"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="right"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/personal" />
-            </LinearLayout>
-        </androidx.appcompat.widget.Toolbar>
+                <com.google.android.material.bottomnavigation.BottomNavigationView
+                    android:id="@+id/bottom_navigation_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:menu="@menu/bottom_navigation_menu" />
+            </com.google.android.material.bottomappbar.BottomAppBar>
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
     </RelativeLayout>
 </LinearLayout>

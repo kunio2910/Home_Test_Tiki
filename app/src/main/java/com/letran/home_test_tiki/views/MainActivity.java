@@ -8,8 +8,6 @@ import com.letran.home_test_tiki.R;
 
 public class MainActivity extends Base_Activity{
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -14,8 +14,7 @@
         android:layout_marginRight="10dp"
         android:layout_centerHorizontal="true"
         card_view:cardCornerRadius="10dp"
-        card_view:cardElevation="3dp"
-        android:backgroundTint="@color/input_login_hint">
+        card_view:cardElevation="3dp">
 
 
         <ImageView
@@ -24,7 +23,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
             android:scaleType="fitXY"
-            android:background="@color/white"/>
+            android:background="@color/white" />
 
     </androidx.cardview.widget.CardView>
 </RelativeLayout>

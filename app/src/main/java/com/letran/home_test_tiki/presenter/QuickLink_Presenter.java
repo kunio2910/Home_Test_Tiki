@@ -3,7 +3,6 @@ package com.letran.home_test_tiki.presenter;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -34,7 +33,7 @@ public class QuickLink_Presenter implements Handle_Presenter_QuickLink.Presenter
     }
 
     @Override
-    public void GetData() {
+    public void GetDataJsonFromAPI() {
 
         // Tag used to cancel the request
         String tag_string_req = "req_getdata";
@@ -45,7 +44,7 @@ public class QuickLink_Presenter implements Handle_Presenter_QuickLink.Presenter
                 .setCancelable(false).build();
         alertDialog.show();
 
-        StringRequest strReqCar_1 = new StringRequest(Request.Method.GET, AppConfig.QUICK_LINK_API, new Response.Listener<String>() {
+        StringRequest strReq = new StringRequest(Request.Method.GET, AppConfig.QUICK_LINK_API, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 convertJsonToObjectQuickLink(response);
@@ -60,21 +59,24 @@ public class QuickLink_Presenter implements Handle_Presenter_QuickLink.Presenter
         });
 
         // Adding request to request queue
-        AppController.getInstance(context).addToRequestQueue(strReqCar_1, tag_string_req);
+        AppController.getInstance(context).addToRequestQueue(strReq, tag_string_req);
     }
 
     public void convertJsonToObjectQuickLink(String response) {
         ItemWrapper itemWrapper = gson.fromJson(response, ItemWrapper.class);
-        List<Item> ItemList = new ArrayList<Item>();
-        List<List<Item>> listListItem = itemWrapper.getData();
-        for(int i = 0;i < listListItem.size();i++){
-            List<Item> lstItem = listListItem.get(i);
-            for (int j = 0;j<lstItem.size();j++){
-                Item item = lstItem.get(j);
-                ItemList.add(item);
+        List<Item> lstItemResult = new ArrayList<Item>();
+        List<List<Item>> lstListItem = itemWrapper.getData();
+
+        for (int i = 0; i < lstListItem.size(); i++) {
+            List<Item> lstItem = lstListItem.get(i);
+            if (lstItem != null && lstItem.size() > 0) {
+                for (int j = 0; j < lstItem.size(); j++) {
+                    Item item = lstItem.get(j);
+                    lstItemResult.add(item);
+                }
             }
         }
 
-        mView.GetDataSuccessQuickLink(ItemList);
+        mView.GetDataQuickLinkSuccess(lstItemResult);
     }
 }

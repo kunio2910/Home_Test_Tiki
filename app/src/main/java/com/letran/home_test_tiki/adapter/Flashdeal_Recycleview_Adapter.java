@@ -42,6 +42,7 @@ public class Flashdeal_Recycleview_Adapter extends RecyclerView.Adapter<Flashdea
         }else
             holder.imageView.setImageResource(R.drawable.notfoundimage);
 
+        //Format price
         String number = String.format("%,d",Integer.parseInt(product.getPrice()));
         holder.txtPrice.setText(number + " đ");
         holder.txtDiscount.setText(lstFlashdeal.get(position).getDiscount_percent() + "%");

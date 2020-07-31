@@ -29,7 +29,7 @@ public class Banner_Presenter implements Handle_Presenter_Banner.Presenter {
     }
 
     @Override
-    public void GetData() {
+    public void GetDataJsonFromAPI() {
 
         // Tag used to cancel the request
         String tag_string_req = "req_getdata";
@@ -40,7 +40,7 @@ public class Banner_Presenter implements Handle_Presenter_Banner.Presenter {
                 .setCancelable(false).build();
         alertDialog.show();
 
-        StringRequest strReqCar_1 = new StringRequest(Request.Method.GET, AppConfig.BANNER_API, new Response.Listener<String>() {
+        StringRequest strReq = new StringRequest(Request.Method.GET, AppConfig.BANNER_API, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 convertJsonToObjectBanner(response);
@@ -55,11 +55,11 @@ public class Banner_Presenter implements Handle_Presenter_Banner.Presenter {
         });
 
         // Adding request to request queue
-        AppController.getInstance(context).addToRequestQueue(strReqCar_1, tag_string_req);
+        AppController.getInstance(context).addToRequestQueue(strReq, tag_string_req);
     }
 
     public void convertJsonToObjectBanner(String response) {
         BannerWrapper bannerWrapper = gson.fromJson(response, BannerWrapper.class);
-        mView.GetDataSuccessBanner(bannerWrapper.getData());
+        mView.GetDataBannerSuccess(bannerWrapper.getData());
     }
 }

@@ -6,11 +6,11 @@ import java.util.List;
 
 public class Handle_Presenter_Flashdeal {
     public interface View{
-        void GetDataSuccessFlashdeal(List<FlashDeal> lstFlashdeal);
+        void GetDataFlashdealSuccess(List<FlashDeal> lstFlashdeal);
         void GetDataFail(String error);
     }
 
     public interface Presenter{
-        void GetData();
+        void GetDataJsonFromAPI();
     }
 }

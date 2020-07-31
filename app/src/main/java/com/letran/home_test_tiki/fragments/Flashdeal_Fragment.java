@@ -1,18 +1,16 @@
 package com.letran.home_test_tiki.fragments;
 
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.PagerSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.letran.home_test_tiki.R;
@@ -36,22 +34,19 @@ public class Flashdeal_Fragment extends Fragment implements Handle_Presenter_Fla
         contentView= inflater.inflate(R.layout.fragment_flashdeal, container, false);
 
         Initialization();
-        GetDataFlashDeal();
 
         return contentView;
     }
 
     private void Initialization(){
         recyclerView = (RecyclerView)contentView.findViewById(R.id.recycleview);
-    }
-
-    private void GetDataFlashDeal(){
         flashdeal_presenter = new Flashdeal_Presenter(this,getContext());
-        flashdeal_presenter.GetData();
+        flashdeal_presenter.GetDataJsonFromAPI();
     }
 
     @Override
-    public void GetDataSuccessFlashdeal(List<FlashDeal> lstFlashdeal) {
+    public void GetDataFlashdealSuccess(List<FlashDeal> lstFlashdeal) {
+        //Show data in recyclerview
         flashdeal_recycleview_adapter = new Flashdeal_Recycleview_Adapter(lstFlashdeal,getContext());
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(mLayoutManager);
@@ -61,6 +56,6 @@ public class Flashdeal_Fragment extends Fragment implements Handle_Presenter_Fla
 
     @Override
     public void GetDataFail(String error) {
-
+        Toast.makeText(getContext(),error,Toast.LENGTH_SHORT).show();
     }
 }

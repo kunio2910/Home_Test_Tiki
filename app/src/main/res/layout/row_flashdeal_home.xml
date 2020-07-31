@@ -8,7 +8,7 @@
         android:id="@+id/image"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:background="@drawable/cart" />
+        android:background="@color/white" />
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -26,7 +26,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:text="50%"
             android:textSize="13dp"
             android:layout_marginLeft="12dp"
             android:layout_marginTop="2dp"
@@ -39,7 +38,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/image"
         android:layout_centerHorizontal="true"
-        android:text="8.900"
         android:textSize="18dp"
         android:textStyle="bold" />
 

@@ -6,11 +6,11 @@ import java.util.List;
 
 public class Handle_Presenter_QuickLink {
     public interface View{
-        void GetDataSuccessQuickLink(List<Item> lstQuickLink);
+        void GetDataQuickLinkSuccess(List<Item> lstQuickLink);
         void GetDataFail(String error);
     }
 
     public interface Presenter{
-        void GetData();
+        void GetDataJsonFromAPI();
     }
 }
